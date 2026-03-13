@@ -1,0 +1,428 @@
+-- =============================================
+-- База данных для магазина обуви "ООО Обувь"
+-- ПРОСТАЯ РАБОЧАЯ ВЕРСИЯ
+-- =============================================
+
+-- Создание базы данных
+CREATE DATABASE ShoeStoreDB;
+GO
+
+USE ShoeStoreDB;
+GO
+
+-- =============================================
+-- Создание таблиц
+-- =============================================
+
+-- Таблица ролей
+CREATE TABLE Roles (
+    RoleID INT IDENTITY(1,1) PRIMARY KEY,
+    RoleName NVARCHAR(50) NOT NULL UNIQUE
+);
+GO
+
+-- Таблица пользователей
+CREATE TABLE Users (
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    Login VARCHAR(100) NOT NULL UNIQUE,
+    Password VARCHAR(50) NOT NULL,
+    RoleID INT NOT NULL,
+    Surname NVARCHAR(100) NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    Patronymic NVARCHAR(100) NULL,
+    FOREIGN KEY (RoleID) REFERENCES Roles(RoleID)
+);
+GO
+
+-- Таблица производителей
+CREATE TABLE Manufacturers (
+    ManufacturerID INT IDENTITY(1,1) PRIMARY KEY,
+    ManufacturerName NVARCHAR(200) NOT NULL UNIQUE
+);
+GO
+
+-- Таблица поставщиков
+CREATE TABLE Suppliers (
+    SupplierID INT IDENTITY(1,1) PRIMARY KEY,
+    SupplierName NVARCHAR(200) NOT NULL UNIQUE
+);
+GO
+
+-- Таблица категорий товаров
+CREATE TABLE Categories (
+    CategoryID INT IDENTITY(1,1) PRIMARY KEY,
+    CategoryName NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+-- Таблица товаров
+CREATE TABLE Products (
+    ProductID INT IDENTITY(1,1) PRIMARY KEY,
+    Article VARCHAR(50) NOT NULL UNIQUE,
+    ProductName NVARCHAR(500) NOT NULL,
+    Unit VARCHAR(20) NOT NULL DEFAULT 'шт.',
+    Price DECIMAL(10,2) NOT NULL CHECK (Price >= 0),
+    SupplierID INT NOT NULL,
+    ManufacturerID INT NOT NULL,
+    CategoryID INT NOT NULL,
+    Discount DECIMAL(5,2) NOT NULL DEFAULT 0 CHECK (Discount >= 0 AND Discount <= 100),
+    QuantityInStock INT NOT NULL DEFAULT 0 CHECK (QuantityInStock >= 0),
+    Description NVARCHAR(MAX) NULL,
+    PhotoPath VARCHAR(500) NULL,
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
+    FOREIGN KEY (ManufacturerID) REFERENCES Manufacturers(ManufacturerID),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+GO
+
+-- Таблица пунктов выдачи
+CREATE TABLE PickupPoints (
+    PickupPointID INT IDENTITY(1,1) PRIMARY KEY,
+    PostalCode VARCHAR(20) NOT NULL,
+    City NVARCHAR(100) NOT NULL,
+    Street NVARCHAR(200) NOT NULL,
+    Building VARCHAR(20) NOT NULL
+);
+GO
+
+-- Таблица статусов заказов
+CREATE TABLE OrderStatuses (
+    StatusID INT IDENTITY(1,1) PRIMARY KEY,
+    StatusName VARCHAR(50) NOT NULL UNIQUE
+);
+GO
+
+-- Таблица заказов
+CREATE TABLE Orders (
+    OrderID INT IDENTITY(1,1) PRIMARY KEY,
+    OrderDate DATE NOT NULL,  -- Используем DATE вместо DATETIME
+    DeliveryDate DATE NULL,    -- Используем DATE вместо DATETIME
+    PickupPointID INT NOT NULL,
+    UserID INT NOT NULL,
+    PickupCode VARCHAR(50) NOT NULL,
+    StatusID INT NOT NULL,
+    FOREIGN KEY (PickupPointID) REFERENCES PickupPoints(PickupPointID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (StatusID) REFERENCES OrderStatuses(StatusID)
+);
+GO
+
+-- Таблица состава заказа
+CREATE TABLE OrderItems (
+    OrderItemID INT IDENTITY(1,1) PRIMARY KEY,
+    OrderID INT NOT NULL,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL CHECK (Quantity > 0),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+GO
+
+-- =============================================
+-- Заполнение справочных таблиц
+-- =============================================
+
+INSERT INTO Roles (RoleName) VALUES 
+('Администратор'),
+('Менеджер'),
+('Авторизированный клиент');
+GO
+
+INSERT INTO OrderStatuses (StatusName) VALUES 
+('Новый'),
+('Завершен');
+GO
+
+INSERT INTO Manufacturers (ManufacturerName) VALUES 
+('Kari'),
+('Marco Tozzi'),
+('Рос'),
+('Rieker'),
+('Alessio Nesca'),
+('CROSBY');
+GO
+
+INSERT INTO Suppliers (SupplierName) VALUES 
+('Kari'),
+('Обувь для вас');
+GO
+
+INSERT INTO Categories (CategoryName) VALUES 
+('Женская обувь'),
+('Мужская обувь');
+GO
+
+-- =============================================
+-- Заполнение таблицы пользователей
+-- =============================================
+
+INSERT INTO Users (Login, Password, RoleID, Surname, Name, Patronymic) VALUES
+-- Администраторы (RoleID = 1)
+('94d5ous@gmail.com', 'uzWC67', 1, 'Никифорова', 'Весения', 'Николаевна'),
+('uth4iz@mail.com', '2L6KZG', 1, 'Сазонов', 'Руслан', 'Германович'),
+('yzls62@outlook.com', 'JlFRCZ', 1, 'Одинцов', 'Серафим', 'Артёмович'),
+-- Менеджеры (RoleID = 2)
+('1diph5e@tutanota.com', '8ntwUp', 2, 'Степанов', 'Михаил', 'Артёмович'),
+('tjde7c@yahoo.com', 'YOyhfR', 2, 'Ворсин', 'Петр', 'Евгеньевич'),
+('wpmrc3do@tutanota.com', 'RSbvHv', 2, 'Старикова', 'Елена', 'Павловна'),
+-- Авторизированные клиенты (RoleID = 3)
+('5d4zbu@tutanota.com', 'rwVDh9', 3, 'Михайлюк', 'Анна', 'Вячеславовна'),
+('ptec8ym@yahoo.com', 'LdNyos', 3, 'Ситдикова', 'Елена', 'Анатольевна'),
+('1qz4kw@mail.com', 'gynQMT', 3, 'Ворсин', 'Петр', 'Евгеньевич'),
+('4np6se@mail.com', 'AtnDjr', 3, 'Старикова', 'Елена', 'Павловна');
+GO
+
+-- =============================================
+-- Заполнение таблицы пунктов выдачи
+-- =============================================
+
+INSERT INTO PickupPoints (PostalCode, City, Street, Building) VALUES
+('420151', 'г. Лесной', 'ул. Вишневая', '32'),
+('125061', 'г. Лесной', 'ул. Подгорная', '8'),
+('630370', 'г. Лесной', 'ул. Шоссейная', '24'),
+('400562', 'г. Лесной', 'ул. Зеленая', '32'),
+('614510', 'г. Лесной', 'ул. Маяковского', '47'),
+('410542', 'г. Лесной', 'ул. Светлая', '46'),
+('620839', 'г. Лесной', 'ул. Цветочная', '8'),
+('443890', 'г. Лесной', 'ул. Коммунистическая', '1'),
+('603379', 'г. Лесной', 'ул. Спортивная', '46'),
+('603721', 'г. Лесной', 'ул. Гоголя', '41'),
+('410172', 'г. Лесной', 'ул. Северная', '13'),
+('614611', 'г. Лесной', 'ул. Молодежная', '50'),
+('454311', 'г.Лесной', 'ул. Новая', '19'),
+('660007', 'г.Лесной', 'ул. Октябрьская', '19'),
+('603036', 'г. Лесной', 'ул. Садовая', '4'),
+('394060', 'г.Лесной', 'ул. Фрунзе', '43'),
+('410661', 'г. Лесной', 'ул. Школьная', '50'),
+('625590', 'г. Лесной', 'ул. Коммунистическая', '20'),
+('625683', 'г. Лесной', 'ул. 8 Марта', ''),
+('450983', 'г.Лесной', 'ул. Комсомольская', '26'),
+('394782', 'г. Лесной', 'ул. Чехова', '3'),
+('603002', 'г. Лесной', 'ул. Дзержинского', '28'),
+('450558', 'г. Лесной', 'ул. Набережная', '30'),
+('344288', 'г. Лесной', 'ул. Чехова', '1'),
+('614164', 'г.Лесной', 'ул. Степная', '30'),
+('394242', 'г. Лесной', 'ул. Коммунистическая', '43'),
+('660540', 'г. Лесной', 'ул. Солнечная', '25'),
+('125837', 'г. Лесной', 'ул. Шоссейная', '40'),
+('125703', 'г. Лесной', 'ул. Партизанская', '49'),
+('625283', 'г. Лесной', 'ул. Победы', '46'),
+('614753', 'г. Лесной', 'ул. Полевая', '35'),
+('426030', 'г. Лесной', 'ул. Маяковского', '44'),
+('450375', 'г. Лесной', 'ул. Клубная', '44'),
+('625560', 'г. Лесной', 'ул. Некрасова', '12'),
+('630201', 'г. Лесной', 'ул. Комсомольская', '17'),
+('190949', 'г. Лесной', 'ул. Мичурина', '26');
+GO
+
+-- =============================================
+-- Заполнение таблицы товаров
+-- =============================================
+
+INSERT INTO Products (Article, ProductName, Unit, Price, SupplierID, ManufacturerID, CategoryID, Discount, QuantityInStock, Description, PhotoPath) VALUES
+('А112Т4', 'Ботинки', 'шт.', 4990, 1, 1, 1, 3, 6, 'Женские Ботинки демисезонные kari', 'product_photos/1.jpg'),
+('F635R4', 'Ботинки', 'шт.', 3244, 2, 2, 1, 2, 13, 'Ботинки Marco Tozzi женские демисезонные, размер 39, цвет бежевый', 'product_photos/2.jpg'),
+('H782T5', 'Туфли', 'шт.', 4499, 1, 1, 2, 4, 5, 'Туфли kari мужские классика MYZ21AW-450A, размер 43, цвет: черный', 'product_photos/3.jpg'),
+('G783F5', 'Ботинки', 'шт.', 5900, 1, 3, 2, 2, 8, 'Мужские ботинки Рос-Обувь кожаные с натуральным мехом', 'product_photos/4.jpg'),
+('J384T6', 'Ботинки', 'шт.', 3800, 2, 4, 2, 2, 16, 'B3430/14 Полуботинки мужские Rieker', 'product_photos/5.jpg'),
+('D572U8', 'Кроссовки', 'шт.', 4100, 2, 3, 2, 3, 6, '129615-4 Кроссовки мужские', 'product_photos/6.jpg'),
+('F572H7', 'Туфли', 'шт.', 2700, 1, 2, 1, 2, 14, 'Туфли Marco Tozzi женские летние, размер 39, цвет черный', 'product_photos/7.jpg'),
+('D329H3', 'Полуботинки', 'шт.', 1890, 2, 5, 1, 4, 4, 'Полуботинки Alessio Nesca женские 3-30797-47, размер 37, цвет: бордовый', 'product_photos/8.jpg'),
+('B320R5', 'Туфли', 'шт.', 4300, 1, 4, 1, 2, 6, 'Туфли Rieker женские демисезонные, размер 41, цвет коричневый', 'product_photos/9.jpg'),
+('G432E4', 'Туфли', 'шт.', 2800, 1, 1, 1, 3, 15, 'Туфли kari женские TR-YR-413017, размер 37, цвет: черный', 'product_photos/10.jpg'),
+('S213E3', 'Полуботинки', 'шт.', 2156, 2, 6, 2, 3, 6, '407700/01-01 Полуботинки мужские CROSBY', NULL),
+('E482R4', 'Полуботинки', 'шт.', 1800, 1, 1, 1, 2, 14, 'Полуботинки kari женские MYZ20S-149, размер 41, цвет: черный', NULL),
+('S634B5', 'Кеды', 'шт.', 5500, 2, 6, 2, 3, 0, 'Кеды Caprice мужские демисезонные, размер 42, цвет черный', NULL),
+('K345R4', 'Полуботинки', 'шт.', 2100, 2, 6, 2, 2, 3, '407700/01-02 Полуботинки мужские CROSBY', NULL),
+('O754F4', 'Туфли', 'шт.', 5400, 2, 4, 1, 4, 18, 'Туфли женские демисезонные Rieker артикул 55073-68/37', NULL),
+('G531F4', 'Ботинки', 'шт.', 6600, 1, 1, 1, 12, 9, 'Ботинки женские зимние ROMER арт. 893167-01 Черный', NULL),
+('J542F5', 'Тапочки', 'шт.', 500, 1, 1, 2, 13, 0, 'Тапочки мужские Арт.70701-55-67син р.41', NULL),
+('B431R5', 'Ботинки', 'шт.', 2700, 2, 4, 2, 2, 5, 'Мужские кожаные ботинки/мужские ботинки', NULL),
+('P764G4', 'Туфли', 'шт.', 6800, 1, 6, 1, 15, 15, 'Туфли женские, ARGO, размер 38', NULL),
+('C436G5', 'Ботинки', 'шт.', 10200, 1, 5, 1, 15, 9, 'Ботинки женские, ARGO, размер 40', NULL),
+('F427R5', 'Ботинки', 'шт.', 11800, 2, 4, 1, 15, 11, 'Ботинки на молнии с декоративной пряжкой FRAU', NULL),
+('N457T5', 'Полуботинки', 'шт.', 4600, 1, 6, 1, 3, 13, 'Полуботинки Ботинки черные зимние, мех', NULL),
+('D364R4', 'Туфли', 'шт.', 12400, 1, 1, 1, 16, 5, 'Туфли Luiza Belly женские Kate-lazo черные из натуральной замши', NULL),
+('S326R5', 'Тапочки', 'шт.', 9900, 2, 6, 2, 17, 15, 'Мужские кожаные тапочки "Профиль С.Дали"', NULL),
+('L754R4', 'Полуботинки', 'шт.', 1700, 1, 1, 1, 2, 7, 'Полуботинки kari женские WB2020SS-26, размер 38, цвет: черный', NULL),
+('M542T5', 'Кроссовки', 'шт.', 2800, 2, 4, 2, 18, 3, 'Кроссовки мужские TOFA', NULL),
+('D268G5', 'Туфли', 'шт.', 4399, 2, 4, 1, 3, 12, 'Туфли Rieker женские демисезонные, размер 36, цвет коричневый', NULL),
+('T324F5', 'Сапоги', 'шт.', 4699, 1, 6, 1, 2, 5, 'Сапоги замша Цвет: синий', NULL),
+('K358H6', 'Тапочки', 'шт.', 599, 1, 4, 2, 20, 2, 'Тапочки мужские син р.41', NULL),
+('H535R5', 'Ботинки', 'шт.', 2300, 2, 4, 1, 2, 7, 'Женские Ботинки демисезонные', NULL);
+GO
+
+-- =============================================
+-- Заполнение таблицы заказов (ПРОСТОЙ СПОСОБ)
+-- =============================================
+
+-- Сначала получим все нужные ID
+DECLARE @User1 INT, @User2 INT, @User3 INT, @StatusCompleted INT, @StatusNew INT;
+SELECT @User1 = UserID FROM Users WHERE Login = '1diph5e@tutanota.com';
+SELECT @User2 = UserID FROM Users WHERE Login = '94d5ous@gmail.com';
+SELECT @User3 = UserID FROM Users WHERE Login = 'uth4iz@mail.com';
+SELECT @StatusCompleted = StatusID FROM OrderStatuses WHERE StatusName = 'Завершен';
+SELECT @StatusNew = StatusID FROM OrderStatuses WHERE StatusName = 'Новый';
+
+-- Вставляем заказы по одному, чтобы точно видеть ошибки
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250227', '20250420', 1, @User1, '901', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20220928', '20250421', 11, @User2, '902', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250321', '20250422', 2, @User3, '903', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250220', '20250423', 11, @User2, '904', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250317', '20250424', 2, @User1, '905', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250301', '20250425', 15, @User2, '906', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250228', '20250426', 3, @User3, '907', @StatusCompleted);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250331', '20250427', 19, @User2, '908', @StatusNew);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250402', '20250428', 5, @User1, '909', @StatusNew);
+
+INSERT INTO Orders (OrderDate, DeliveryDate, PickupPointID, UserID, PickupCode, StatusID) 
+VALUES ('20250403', '20250429', 19, @User1, '910', @StatusNew);
+GO
+
+-- =============================================
+-- Заполнение таблицы состава заказов
+-- =============================================
+
+-- Заказ 1
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 1, ProductID, 2 FROM Products WHERE Article = 'А112Т4'
+UNION ALL
+SELECT 1, ProductID, 2 FROM Products WHERE Article = 'F635R4';
+
+-- Заказ 2
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 2, ProductID, 1 FROM Products WHERE Article = 'H782T5'
+UNION ALL
+SELECT 2, ProductID, 1 FROM Products WHERE Article = 'G783F5';
+
+-- Заказ 3
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 3, ProductID, 10 FROM Products WHERE Article = 'J384T6'
+UNION ALL
+SELECT 3, ProductID, 10 FROM Products WHERE Article = 'D572U8';
+
+-- Заказ 4
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 4, ProductID, 5 FROM Products WHERE Article = 'F572H7'
+UNION ALL
+SELECT 4, ProductID, 4 FROM Products WHERE Article = 'D329H3';
+
+-- Заказ 5
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 5, ProductID, 2 FROM Products WHERE Article = 'А112Т4'
+UNION ALL
+SELECT 5, ProductID, 2 FROM Products WHERE Article = 'F635R4';
+
+-- Заказ 6
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 6, ProductID, 1 FROM Products WHERE Article = 'H782T5'
+UNION ALL
+SELECT 6, ProductID, 1 FROM Products WHERE Article = 'G783F5';
+
+-- Заказ 7
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 7, ProductID, 10 FROM Products WHERE Article = 'J384T6'
+UNION ALL
+SELECT 7, ProductID, 10 FROM Products WHERE Article = 'D572U8';
+
+-- Заказ 8
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 8, ProductID, 5 FROM Products WHERE Article = 'F572H7'
+UNION ALL
+SELECT 8, ProductID, 4 FROM Products WHERE Article = 'D329H3';
+
+-- Заказ 9
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 9, ProductID, 5 FROM Products WHERE Article = 'B320R5'
+UNION ALL
+SELECT 9, ProductID, 1 FROM Products WHERE Article = 'G432E4';
+
+-- Заказ 10
+INSERT INTO OrderItems (OrderID, ProductID, Quantity) 
+SELECT 10, ProductID, 5 FROM Products WHERE Article = 'S213E3'
+UNION ALL
+SELECT 10, ProductID, 5 FROM Products WHERE Article = 'E482R4';
+GO
+
+-- =============================================
+-- Создание простых представлений
+-- =============================================
+
+CREATE VIEW vw_Products AS
+SELECT 
+    p.ProductID,
+    p.Article,
+    p.ProductName,
+    p.Unit,
+    p.Price,
+    s.SupplierName,
+    m.ManufacturerName,
+    c.CategoryName,
+    p.Discount,
+    p.QuantityInStock,
+    p.Description,
+    p.PhotoPath,
+    p.Price * (1 - p.Discount/100) AS PriceWithDiscount
+FROM Products p
+LEFT JOIN Suppliers s ON p.SupplierID = s.SupplierID
+LEFT JOIN Manufacturers m ON p.ManufacturerID = m.ManufacturerID
+LEFT JOIN Categories c ON p.CategoryID = c.CategoryID;
+GO
+
+CREATE VIEW vw_Orders AS
+SELECT 
+    o.OrderID,
+    o.OrderDate,
+    o.DeliveryDate,
+    pp.PostalCode + ' ' + pp.City + ' ' + pp.Street + ' ' + pp.Building AS PickupAddress,
+    u.Surname + ' ' + u.Name + ' ' + ISNULL(u.Patronymic, '') AS CustomerFullName,
+    o.PickupCode,
+    os.StatusName
+FROM Orders o
+LEFT JOIN PickupPoints pp ON o.PickupPointID = pp.PickupPointID
+LEFT JOIN Users u ON o.UserID = u.UserID
+LEFT JOIN OrderStatuses os ON o.StatusID = os.StatusID;
+GO
+
+-- =============================================
+-- Индексы
+-- =============================================
+
+CREATE INDEX IX_Products_Article ON Products(Article);
+CREATE INDEX IX_Users_Login ON Users(Login);
+CREATE INDEX IX_OrderItems_OrderID ON OrderItems(OrderID);
+CREATE INDEX IX_OrderItems_ProductID ON OrderItems(ProductID);
+GO
+
+-- =============================================
+-- Проверка
+-- =============================================
+
+SELECT 'Users:' as TableName, COUNT(*) as Count FROM Users
+UNION ALL
+SELECT 'Products:', COUNT(*) FROM Products
+UNION ALL
+SELECT 'Orders:', COUNT(*) FROM Orders
+UNION ALL
+SELECT 'OrderItems:', COUNT(*) FROM OrderItems;
+
+SELECT TOP 5 * FROM vw_Products;
+SELECT TOP 5 * FROM vw_Orders;
+GO
