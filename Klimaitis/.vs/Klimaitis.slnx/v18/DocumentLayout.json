@@ -1,0 +1,198 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\productlistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\productlistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\producteditform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\producteditform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\producteditform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\producteditform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\productlistform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\productlistform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\forms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\forms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|c:\\users\\valij\\1_academic_projects\\dotnet\\klimaitis\\klimaitis\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20AD46EB-E489-4E7D-9F24-F5C0466EE501}|Klimaitis\\Klimaitis.csproj|solutionrelative:klimaitis\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 188,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Repositories\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "Klimaitis\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAswK4AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:52:55.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductEditForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductEditForm.Designer.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\ProductEditForm.Designer.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductEditForm.Designer.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\ProductEditForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:52:08.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductEditForm.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductEditForm.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\ProductEditForm.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductEditForm.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\ProductEditForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:48:56.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductListForm.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductListForm.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\ProductListForm.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductListForm.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\ProductListForm.cs",
+              "ViewState": "AgIAAG4BAAAAAAAAAAAswHgBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:43:58.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductListForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductListForm.Designer.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\ProductListForm.Designer.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\ProductListForm.Designer.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\ProductListForm.Designer.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAswEUAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:43:42.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\LoginForm.Designer.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\LoginForm.Designer.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\LoginForm.Designer.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\LoginForm.Designer.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAswEcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:41:36.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\MainForm.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\MainForm.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAewA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:39:59.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\MainForm.Designer.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\MainForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:39:12.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Klimaitis\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:38:42.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Klimaitis\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\valij\\1_Academic_Projects\\Dotnet\\Klimaitis\\Klimaitis\\Forms\\LoginForm.cs",
+              "RelativeToolTip": "Klimaitis\\Forms\\LoginForm.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowJsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T10:38:11.538Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
